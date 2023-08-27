@@ -1,4 +1,3 @@
-
 function add(a, b) {
     return a + b;
 }
@@ -70,22 +69,27 @@ document.querySelector(".backspace").addEventListener("click", () => {
 });
 
 document.querySelector(".equals").addEventListener("click", () => {
+    performCalculation();
+    updateDisplay();
+});
+
+document.querySelector(".enter").addEventListener("click", () => {
+    performCalculation();
+    updateDisplay();
+
+});
+
+function performCalculation() {
     if (firstNumber !== null && operator !== null) {
-        const secondNumber = parseFloat(currentInput);
+        const secondNumber = currentInput === "" ? 0 : parseFloat(currentInput);
         const result = operate(operator, firstNumber, secondNumber);
+
         firstNumber = null;
         operator = null;
         currentInput = result.toString();
         updateDisplay(result);
     }
-});
-
-document.querySelector(".clear").addEventListener("click", () => {
-    currentInput = "";
-    firstNumber = null;
-    operator = null;
-    updateDisplay(currentInput);
-});
+}
 
 document.querySelector(".divide").addEventListener("click", () => {
     if (currentInput === "0") {
@@ -107,17 +111,11 @@ document.addEventListener("keydown", event => {
         updateDisplay(currentInput);
     }
 
-    if (key === "enter") {
-        if (firstNumber !== null && operator !== null) {
-            const secondNumber = parseFloat(currentInput);
-            const result = operate(operator, firstNumber, secondNumber);
-            firstNumber = null;
-            operator = null;
-            currentInput = result.toString();
-            updateDisplay(result);
-        }
+    if (key === "Enter") {
+        event.preventDefault();  // Prevent default behavior of Enter key
+        performCalculation();    // Perform the calculation
     }
-    
+
     if (key === "Backspace") {
         currentInput = currentInput.slice(0, -1);
         updateDisplay(currentInput);
