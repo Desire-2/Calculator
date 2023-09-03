@@ -1,33 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Calculator Project</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Calculator</title>
 </head>
 <body>
-    <h1>Calculator</h1>
-    <div class="calculator">
-        <input type="text" id="display" disabled aria-label="Calculator Display">
-        <button class="digit" aria-label="Digit 1">1</button>
-        <button class="digit" aria-label="Digit 2">2</button>
-        <button class="digit" aria-label="Digit 3">3</button>
-        <button class="operator" aria-label="Add">+</button>
-        <button class="digit" aria-label="Digit 4">4</button>
-        <button class="digit" aria-label="Digit 5">5</button>
-        <button class="digit" aria-label="Digit 6">6</button>
-        <button class="operator" aria-label="Subtract">-</button>
-        <button class="digit" aria-label="Digit 7">7</button>
-        <button class="digit" aria-label="Digit 8">8</button>
-        <button class="digit" aria-label="Digit 9">9</button>
-        <button class="operator" aria-label="Multiply">*</button>
-        <button class="decimal" aria-label="Decimal Point">.</button>
-        <button class="digit" aria-label="Digit 0">0</button>
-        <button class="equals" aria-label="Equals">=</button>
-        <button class="operator" aria-label="Divide">/</button>
-        <button class="operator" aria-label="Percentage">%</button>
-        <button class="clear" aria-label="Clear">C</button>
-        <button class="backspace" aria-label="Backspace">←</button>
-        <button class="enter" aria-label="Enter">Enter</button>
-    </div>
-    <script src="calculator.js"></script>
+    <main class="main">
+        <div class="calculator">
+            <div class="screen">
+                <div class="screen-last" id="lastOperationScreen"></div>
+                <div class="screen-current" id="currentOperationScreen">0</div>
+            </div>
+            <div class="buttons-grid">
+                <button class="btn" onclick="appendNumber('7')">7</button>
+                <button class="btn" onclick="appendNumber('8')">8</button>
+                <button class="btn" onclick="appendNumber('9')">9</button>
+                <button class="btn" onclick="setOperation('÷')">÷</button>
+
+                <button class="btn" onclick="appendNumber('4')">4</button>
+                <button class="btn" onclick="appendNumber('5')">5</button>
+                <button class="btn" onclick="appendNumber('6')">6</button>
+                <button class="btn" onclick="setOperation('×')">×</button>
+
+                <button class="btn" onclick="appendNumber('1')">1</button>
+                <button class="btn" onclick="appendNumber('2')">2</button>
+                <button class="btn" onclick="appendNumber('3')">3</button>
+                <button class="btn" onclick="setOperation('−')">−</button>
+
+                <button class="btn" id="pointBtn" onclick="appendPoint('.')">.</button>
+                <button class="btn" onclick="appendNumber('0')">0</button>
+                <button class="btn btn-red" id="equalsBtn" onclick="evaluate()">=</button>
+                <button class="btn" onclick="setOperation('+')">+</button>
+                <button class="btn btn-red span-2" id="clearBtn" onclick="clear()">CLEAR</button>
+                <button class="btn btn-blue span-2" id="deleteBtn" onclick="deleteNumber()">DELETE</button>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>
+            Copyright © <script>document.write(new Date().getFullYear())</script> Desire BIKORIMA
+        </p>
+        <a href="#" target="_blank">
+            https://github.com/Desire-2/Calculator
+        </a>
+    </footer>
+    <script src="calculator.js" defer></script>
+</body>
 </html>
